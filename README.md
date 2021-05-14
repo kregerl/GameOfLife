@@ -9,4 +9,4 @@ Controls:
 
 Compiling:  
 Clone the repo and compile the project with cmake.  
-`git clone https://github.com/kregerl/GameOfLife && cmake GameOfLife`
+`git clone https://github.com/kregerl/GameOfLife && cmake GameOfLife && make`
