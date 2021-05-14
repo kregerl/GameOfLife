@@ -1,9 +1,15 @@
 #include "rendering.h"
 
-const SDL_Color GRID_COLOR = {
+const SDL_Color ON_GRID_COLOR = {
         .r = 92,
         .g = 92,
         .b = 92
+};
+
+const SDL_Color OFF_GRID_COLOR = {
+        .r = 255,
+        .g = 65,
+        .b = 55
 };
 
 const SDL_Color LIVING_CELL_COLOR = {
@@ -19,7 +25,11 @@ const SDL_Color DEAD_CELL_COLOR = {
 };
 
 void render_game(SDL_Renderer *renderer, Game *game) {
-    render_grid(renderer, &GRID_COLOR);
+    if (game->state == RUNNING) {
+        render_grid(renderer, &ON_GRID_COLOR);
+    } else if (game->state == PAUSED) {
+        render_grid(renderer, &OFF_GRID_COLOR);
+    }
     render_cells(renderer, game->board);
 
 }

@@ -3,5 +3,5 @@ project(SDLLife C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(SDLLife main.c rendering.c rendering.h game.h game.c)
+add_executable(SDLLife main.c rendering.c rendering.h game.h game.c input.c input.h)
 target_link_libraries(SDLLife SDL2)

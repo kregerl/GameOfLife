@@ -4,9 +4,9 @@
 #include <SDL2/SDL.h>
 #include <math.h>
 
-#define WIDTH 600
-#define HEIGHT 600
-#define NUM_CELLS 50
+#define WIDTH 1200
+#define HEIGHT 800
+#define NUM_CELLS 100
 #define CELL_WIDTH (WIDTH / NUM_CELLS)
 #define CELL_HEIGHT (HEIGHT/ NUM_CELLS)
 

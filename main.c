@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "game.h"
+#include "input.h"
 #include "rendering.h"
 
 
@@ -11,8 +12,9 @@ int main() {
         return EXIT_FAILURE;
     }
 
-    SDL_Window *window = SDL_CreateWindow("Procedural",
-                                          100, 100,
+    SDL_Window *window = SDL_CreateWindow("Game of Life",
+                                          SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
                                           WIDTH, HEIGHT,
                                           SDL_WINDOW_SHOWN);
 
@@ -44,17 +46,25 @@ int main() {
 
                 case SDL_KEYDOWN:
                     switch (e.key.keysym.sym) {
-                        case SDLK_ESCAPE:
+                        case SDLK_SPACE:
                             if (game.state == PAUSED) {
                                 game.state = RUNNING;
                             } else if (game.state == RUNNING) {
                                 game.state = PAUSED;
                             }
                             break;
-                        case SDLK_SPACE:
+                        case SDLK_s:
                             if (game.state == PAUSED) {
                                 step(&game);
                             }
+                            break;
+                        case SDLK_r:
+                            if (game.state == PAUSED) {
+                                memset(&(game.board), 0, NUM_CELLS * NUM_CELLS * sizeof(int));
+                            }
+                            break;
+                        case SDLK_f:
+                            init_game(&game);
                             break;
 
                         default: {
@@ -63,10 +73,15 @@ int main() {
                     }
                     break;
 
+                case SDL_MOUSEBUTTONDOWN:
+                    click_on_board(&game, e.button.x, e.button.y);
+                    break;
+
                 default: {
                 }
             }
         }
+
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
