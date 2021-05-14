@@ -2,10 +2,10 @@
 This is an implementation of Conway's Game of Life written in C using SDL2.  
 Controls:  
 - SPACE: Starts / Stops the simulation.  
-- S: Step through the simulation one frame at a time. Only works when paused.  
+- S: Step through the simulation one frame at a time. Only when paused.  
 - R: Clears the board, only works when paused.  
 - F: Randomizes the board.  
-- Mouse Clicks: Place / Remove a cell from the board.  
+- Mouse Clicks: Place / Remove a cell from the board. Only when paused.  
 
 Compiling:  
 Clone the repo and compile the project with cmake.  
